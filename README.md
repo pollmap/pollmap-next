@@ -135,3 +135,25 @@ vercel --prod
 
 `CONTRIBUTING.md` 참고. 외부 PR 은 오타 수정 / 접근성 개선 / 명백한 버그
 수정에 한해 환영합니다.
+
+## Vercel 배포
+
+```bash
+# Vercel CLI 설치
+npm i -g vercel
+
+# 로그인 (한 번만)
+vercel login
+
+# 배포 (preview)
+vercel
+
+# 프로덕션 배포
+vercel --prod
+```
+
+또는 GitHub UI: <https://vercel.com/new> → `pollmap/pollmap-next` import → Vercel 자동 감지 (`vercel.json` 읽음) → 배포.
+
+**예상 도메인**: `pollmap-next.vercel.app` (또는 Vercel 프로젝트 설정에서 사용자 지정).
+
+`vercel.json` 에는 5 보안 헤더 + Korean region (`icn1`) + pnpm 빌드 명령이 사전 설정되어 있다.
