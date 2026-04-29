@@ -1,0 +1,40 @@
+---
+slug: career-ops-kr
+name: 'Career-Ops KR'
+class: 'JOB MARKET'
+order: 5
+---
+
+## What it is
+
+한국 27 개 채용 / 자격증 / 공모전 채널을 단일 CLI 로 스캔. 정규화 + 스코어링
++ 마감일 캘린더.
+
+## 27 채널
+
+- 일반: 사람인, 잡코리아, 원티드, 인크루트, 자소설닷컴, 슈퍼루키
+- 대기업: 카카오, 카카오뱅크, 카카오페이, 토스, 네이버
+- 금융: 금감원, 한국은행, 국민은행, 신한, 하나, 우리, IBK, KB증권 ...
+- 공기업: 알리오, 클린아이, 잡알리오 수시
+- 자격: 큐넷, 한국직업능력개발원
+- 공모: DBpia, 산학협력 매개
+
+## 핵심 기능
+
+```bash
+career-ops scan                    # 27 채널 일괄 스캔
+career-ops score JOB_ID            # AI 채점 (gemma4:26b)
+career-ops calendar --next 30d     # 마감일 캘린더
+career-ops apply --preset pb-2027  # 프리셋 필터
+```
+
+## 통계
+
+- 449 tests green (Sprint 5 기준)
+- 3,301 건 / 188 기관 (Sprint 10 기준 안보 + 금융 DB)
+- 27 채널 일일 스캔, 09:00 자동
+- v1.0.1 태깅 (gemma4:26b 자동 점수, 13 commits)
+
+## 스택
+
+scrapling (Cloudflare 우회), playwright, httpx, pydantic, sqlite + duckdb.

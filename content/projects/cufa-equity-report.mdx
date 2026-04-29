@@ -1,0 +1,30 @@
+---
+slug: cufa-equity-report
+name: 'CUFA Equity'
+class: 'RESEARCH OPS'
+order: 2
+---
+
+## What it is
+
+기업분석 보고서 자동화 시스템. 검증 → 투자포인트 → 밸류에이션 → 리스크 →
+품질평가 5 모듈. 멀티-모델 (Claude + GPT-5 + 로컬 LLM) 분담.
+
+## 보고서 9편
+
+HD현대중공업 · KSS해운 · JYP · 한국콜마 · HD건설기계 · 플리토 외 4.
+평균 80K자 / SVG 25+ / 표 25+. Evaluator v2 ALL PASS 기준.
+
+## 빌더 구조
+
+- `builder/build.py` — 메인 오케스트레이터
+- `builder/sections/` — 5 모듈
+- `builder/charts/` — viz_* MCP wrapper
+- `builder/evaluator.py` — 자동 검증 루프
+
+## 데이터 원천
+
+- DART 연결재무제표 (CFS 전용)
+- ECOS 거시 컨텍스트
+- 컨센서스 (네이버/에프앤가이드)
+- Forward / TTM / 12MF 기준 명시

@@ -1,0 +1,36 @@
+---
+slug: luxon-terminal
+name: 'Luxon Terminal'
+class: 'QUANT LAB'
+order: 4
+---
+
+## What it is
+
+실험용 퀀트 프레임워크. 백테스트 + 리스크 게이트 + 자본 승급 룰. 989 tests
+green, walk-forward 검증.
+
+## 핵심 모듈
+
+- **backtester/core/pipeline.py** — QuantPipeline
+- **backtester/risk/** — 6 모듈 (drawdown, regime, capacity, …)
+- **backtester/walk_forward.py** — IS/OOS 분리 + 갭 패딩
+- **backtester/capital_ladder.py** — 검증 단계마다 자본 승급
+- **backtester/postmortem.py** — 복기 엔진
+
+## 실데이터
+
+- Upbit (KRW 페어) — 시간/일봉
+- KIS (한국 주식) — 일봉/분봉
+- yfinance (글로벌) — 보조
+
+## 페이퍼 트레이딩
+
+v0.3α 완성 (378 tests 시점). 다음 마일스톤: 실제 KIS 페이퍼 계좌로
+첫 walk-forward 시그널 송출.
+
+## 철학
+
+가치투자로 분석하고, 매크로·모멘텀으로 집행한다. 직관 매매를 부정하지
+않되, *기록되지 않은 직관은 알파가 아니다* 를 강제한다 — postmortem 엔진이
+모든 진입/청산을 사후 라벨링.

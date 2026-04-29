@@ -1,0 +1,33 @@
+/* Kubrick / Odyssey 토큰 — Tailwind 토큰과 동기 (이중 소스) */
+:root {
+  /* 우주 본체 */
+  --void: #000000;
+  --void-deep: #050507;
+  --hull: #0c0d10;
+  --station: #1a1c20;
+  --steel: #2a2d33;
+  --plate: #3a3d44;
+
+  /* 빛 */
+  --starlight: #f5f5f5;
+  --starlight-dim: #d8d9dd;
+  --grey: #b0bec5;
+  --grey-deep: #5a6168;
+
+  /* 액센트 */
+  --orbital: #1565c0;
+  --orbital-bright: #2a7fd9;
+  --hal: #ff0000;
+  --hal-glow: #ff000033;
+
+  --grid: rgba(245, 245, 245, 0.025);
+  --grid-bright: rgba(245, 245, 245, 0.06);
+
+  --font-display: 'Orbitron', system-ui, sans-serif;
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, system-ui,
+    sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --pad: clamp(20px, 4vw, 48px);
+  --pad-section: clamp(80px, 14vh, 200px);
+}

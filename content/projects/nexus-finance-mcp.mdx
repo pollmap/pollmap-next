@@ -1,0 +1,33 @@
+---
+slug: nexus-finance-mcp
+name: 'Nexus Finance'
+class: 'DATA INFRA'
+order: 1
+---
+
+## What it is
+
+Claude / GPT 같은 AI 에이전트가 한국 + 글로벌 금융 데이터에 접근하기 위한
+MCP (Model Context Protocol) 게이트웨이. 64 개 서브서버, 398 개 도구.
+
+## 도구 카테고리
+
+- **dart_*** — DART 공시 / 재무제표 / 지분변동
+- **ecos_*** — 한국은행 ECOS (거시지표)
+- **macro_fred / macro_imf / macro_oecd** — 글로벌 거시
+- **stocks_*** · **us_stock_*** · **asia_*** · **india_*** — 주가
+- **factor_* / portadv_* / signal_*** — 퀀트 팩터/포트폴리오
+- **viz_*** — 36 종 차트 (line, candle, sankey, sunburst, heatmap, …)
+
+## 인프라
+
+- VPS (<MCP_VPS_HOST>) 마스터 + 노트북 로컬 포크 (127.0.0.1:8100)
+- 왕복 레이턴시: VPS 200ms → 로컬 1ms
+- 인증: nginx auth + 127.0.0.1 바인딩 + UFW deny
+- 자동 시작: Windows Startup VBS
+
+## 왜 만들었나
+
+CUFA 보고서 빌드, 백테스트, 리서치 자동화 — 매번 비슷한 데이터 호출을
+했다. AI 에이전트한테 "이 종목 5년 재무, 동종업계 비교, 매크로 컨텍스트"
+한 번에 넘기기 위해서.

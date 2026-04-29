@@ -1,0 +1,229 @@
+/* ─────────────────────────────────────────────────────────────
+ * Starfield + Docking Station + Sunline
+ * Kubrick v2 의 시그니처 우주 백드롭. 정적 CSS 만으로 구성.
+ * ───────────────────────────────────────────────────────────── */
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 30%,
+    #060810 0%,
+    #000000 60%,
+    #000000 100%
+  );
+  overflow: hidden;
+}
+
+.stars-1,
+.stars-2,
+.stars-3 {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  animation: drift 480s linear infinite;
+}
+
+.stars-1 {
+  box-shadow:
+    12vw 18vh 0 0.5px var(--starlight),
+    28vw 8vh 0 0.5px var(--starlight),
+    44vw 22vh 0 0.5px var(--starlight-dim),
+    67vw 14vh 0 0.5px var(--starlight),
+    82vw 32vh 0 0.5px var(--starlight-dim),
+    8vw 48vh 0 0.5px var(--starlight),
+    37vw 56vh 0 0.5px var(--starlight-dim),
+    53vw 64vh 0 0.5px var(--starlight),
+    72vw 72vh 0 0.5px var(--starlight-dim),
+    91vw 84vh 0 0.5px var(--starlight),
+    18vw 88vh 0 0.5px var(--starlight-dim),
+    4vw 76vh 0 0.5px var(--starlight),
+    24vw 32vh 0 0.5px var(--starlight-dim),
+    58vw 38vh 0 0.5px var(--starlight),
+    77vw 44vh 0 0.5px var(--starlight-dim),
+    14vw 12vh 0 0.5px var(--starlight),
+    62vw 92vh 0 0.5px var(--starlight),
+    86vw 60vh 0 0.5px var(--starlight-dim);
+}
+
+.stars-2 {
+  box-shadow:
+    7vw 22vh 0 0.3px var(--grey),
+    31vw 44vh 0 0.3px var(--grey),
+    49vw 12vh 0 0.3px var(--grey-deep),
+    71vw 28vh 0 0.3px var(--grey),
+    89vw 50vh 0 0.3px var(--grey-deep),
+    11vw 68vh 0 0.3px var(--grey),
+    25vw 82vh 0 0.3px var(--grey-deep),
+    41vw 92vh 0 0.3px var(--grey),
+    57vw 78vh 0 0.3px var(--grey-deep),
+    78vw 64vh 0 0.3px var(--grey),
+    95vw 16vh 0 0.3px var(--grey-deep),
+    3vw 36vh 0 0.3px var(--grey),
+    21vw 52vh 0 0.3px var(--grey-deep),
+    39vw 24vh 0 0.3px var(--grey),
+    66vw 56vh 0 0.3px var(--grey-deep),
+    83vw 12vh 0 0.3px var(--grey);
+  animation-duration: 720s;
+}
+
+.stars-3 {
+  /* 가장 밝은 별 — 깜빡임 */
+  box-shadow:
+    16vw 28vh 0 0.8px var(--starlight),
+    52vw 18vh 0 0.8px var(--starlight),
+    74vw 56vh 0 0.8px var(--starlight),
+    30vw 72vh 0 0.8px var(--starlight),
+    88vw 38vh 0 0.8px var(--starlight);
+  animation:
+    drift 600s linear infinite,
+    twinkle 4s ease-in-out infinite;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-2vh) rotate(0.5deg);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ─────────────── DOCKING STATION (회전 원형) ─────────────── */
+.station-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.station-disk {
+  width: 180vh;
+  height: 180vh;
+  max-width: 180vw;
+  max-height: 180vw;
+  border: 1px solid rgba(245, 245, 245, 0.04);
+  border-radius: 50%;
+  position: relative;
+  animation: station-rotate 360s linear infinite;
+  mask-image: radial-gradient(
+    circle,
+    transparent 35%,
+    black 38%,
+    black 60%,
+    transparent 64%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle,
+    transparent 35%,
+    black 38%,
+    black 60%,
+    transparent 64%
+  );
+}
+
+.station-disk::before,
+.station-disk::after {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border: 1px solid rgba(245, 245, 245, 0.025);
+  border-radius: 50%;
+}
+
+.station-disk::after {
+  inset: 22%;
+  border-color: rgba(21, 101, 192, 0.05);
+}
+
+.station-spokes {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(245, 245, 245, 0.012) 1deg,
+    transparent 2deg,
+    transparent 60deg,
+    rgba(245, 245, 245, 0.012) 61deg,
+    transparent 62deg,
+    transparent 120deg,
+    rgba(245, 245, 245, 0.012) 121deg,
+    transparent 122deg,
+    transparent 180deg,
+    rgba(245, 245, 245, 0.012) 181deg,
+    transparent 182deg,
+    transparent 240deg,
+    rgba(245, 245, 245, 0.012) 241deg,
+    transparent 242deg,
+    transparent 300deg,
+    rgba(245, 245, 245, 0.012) 301deg,
+    transparent 302deg,
+    transparent 360deg
+  );
+}
+
+@keyframes station-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─────────────── SUNLINE ─────────────── */
+.sunline {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(245, 245, 245, 0.03) 30%,
+    rgba(245, 245, 245, 0.08) 50%,
+    rgba(245, 245, 245, 0.03) 70%,
+    transparent 100%
+  );
+  animation: sunline-drift 90s ease-in-out infinite alternate;
+  filter: blur(0.5px);
+}
+
+@keyframes sunline-drift {
+  from {
+    left: 35%;
+    opacity: 0.4;
+  }
+  to {
+    left: 65%;
+    opacity: 0.8;
+  }
+}
+
+/* prefers-reduced-motion: 모든 무한 애니메이션 중지 */
+@media (prefers-reduced-motion: reduce) {
+  .stars-1,
+  .stars-2,
+  .stars-3,
+  .station-disk,
+  .sunline {
+    animation: none !important;
+  }
+}
